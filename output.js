@@ -1,4 +1,4 @@
-var _ref, _ref2, _ref3, _ref4, _ref5, _ref6, _listOfPeople;
+var _, _ref, _ref2, _ref3, _ref4, _ref5, _ref6, _listOfPeople;
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
@@ -91,14 +91,20 @@ const result5 = pipe(listOfPeople, sortedBySalary, first, withSalaryInEuros, wit
 console.log('\n--- 5 ---');
 console.log(result5); // x1000 readability
 // --
-// Pipeline operator! Coming soon..
+// Curried version
 
-const multiplyBy2 = x => x * 2; // console.log(
-//     5 |> multiplyBy2
-// );
-// --
+const lowestSaysHi = value => pipe(value, sortedBySalary, first, withSalaryInEuros, withTaxes, withFullName, withSalaryRounded, saysHi);
 
-
-const result6 = (_ref = (_ref2 = (_ref3 = (_ref4 = (_ref5 = (_ref6 = (_listOfPeople = listOfPeople, sortedBySalary(_listOfPeople)), first(_ref6)), withSalaryInEuros(_ref5)), withTaxes(_ref4)), withFullName(_ref3)), withSalaryRounded(_ref2)), saysHi(_ref));
+const result6 = lowestSaysHi(listOfPeople);
 console.log('\n--- 6 ---');
-console.log(result6);
+console.log(result6); // --
+// Pipeline operator! Coming soon..
+// For now, we need to use a transpiler
+
+const multiplyBy2 = x => x * 2;
+
+console.log((_ = 5, multiplyBy2(_))); // --
+
+const result7 = (_ref = (_ref2 = (_ref3 = (_ref4 = (_ref5 = (_ref6 = (_listOfPeople = listOfPeople, sortedBySalary(_listOfPeople)), first(_ref6)), withSalaryInEuros(_ref5)), withTaxes(_ref4)), withFullName(_ref3)), withSalaryRounded(_ref2)), saysHi(_ref));
+console.log('\n--- 7 ---');
+console.log(result7);

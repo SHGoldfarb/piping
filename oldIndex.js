@@ -40,4 +40,4 @@ console.log(decoratedJuanP);
 console.log(decoratedJuanP.getName());
 console.log(decoratedJuanP.getAge());
 
-console.log(juanP |> addGetName |> addGetAge)
+// console.log(juanP |> addGetName |> addGetAge)
