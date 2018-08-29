@@ -4,14 +4,27 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-// Let's say we have a list of people with their salaries
+// Let's make a composed function
+const addTwo = x => x + 2;
+
+const multiplyByTen = x => x * 10;
+
+let result;
+result = multiplyByTen(addTwo(5));
+console.log(result);
+
+const compose = (f1, f2) => x => f2(f1(x));
+
+result = compose(addTwo, multiplyByTen)(5);
+console.log(result); // Let's say we have a list of people with their salaries
+
 const listOfPeople = [{
   name: 'John',
-  lastName: 'Doe',
+  lastName: 'Green',
   salary: 5000
 }, {
   name: 'Jane',
-  lastName: 'Smith',
+  lastName: 'Brown',
   salary: 1500
 }, {
   name: 'Chris',
@@ -19,7 +32,7 @@ const listOfPeople = [{
   salary: 2500
 }, {
   name: 'Buck',
-  lastName: 'Brown',
+  lastName: 'Black',
   salary: 4250
 }]; // What if we want to find out who has the lowest salary
 
@@ -27,9 +40,9 @@ const compareSalaries = (person1, person2) => person1.salary < person2.salary ? 
 
 const sortedBySalary = list => list.sort(compareSalaries);
 
-const result = sortedBySalary(listOfPeople)[0].name;
+const result1 = sortedBySalary(listOfPeople)[0].name;
 console.log('--- 1 ---');
-console.log(result); // Done! and it's readable too!
+console.log(result1); // Done! and it's readable too!
 // --
 // But now we want them to introduce themselves
 
@@ -76,7 +89,7 @@ const personWithLowestSalary = peopleSortedBySalary[0];
 const personWithLowestSalaryInEuros = withSalaryInEuros(personWithLowestSalary);
 const personWithLowestSalaryInEurosAndTaxesAccounted = withTaxes(personWithLowestSalaryInEuros);
 const personWithLowestSalaryInEurosAndTaxesAccokjashfljhaskdfsadkjafk = 'asd'; // Syntax error name too long
-// Ok it's not a real SyntaxError but you get the point
+// Ok it's not a real error but you get the point
 // We don't really want to think up 5+ single-use variable names
 // every time we try to print something usefull, so now we have 
 // to stick with unreadable code... don't we?
@@ -103,7 +116,7 @@ console.log(result6); // --
 
 const multiplyBy2 = x => x * 2;
 
-console.log((_ = 5, multiplyBy2(_))); // --
+console.log((_ = 5, multiplyBy2(_))); // // --
 
 const result7 = (_ref = (_ref2 = (_ref3 = (_ref4 = (_ref5 = (_ref6 = (_listOfPeople = listOfPeople, sortedBySalary(_listOfPeople)), first(_ref6)), withSalaryInEuros(_ref5)), withTaxes(_ref4)), withFullName(_ref3)), withSalaryRounded(_ref2)), saysHi(_ref));
 console.log('\n--- 7 ---');

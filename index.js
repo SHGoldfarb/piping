@@ -1,40 +1,55 @@
-// Let's say we have a list of people with their salaries
+// Let's make a composed function
 
-const listOfPeople = [
-    {
-        name: 'John',
-        lastName: 'Doe',
-        salary: 5000
-    },
-    {
-        name: 'Jane',
-        lastName: 'Smith',
-        salary: 1500
-    },
-    {
-        name: 'Chris',
-        lastName: 'White',
-        salary: 2500
-    },
-    {
-        name: 'Buck',
-        lastName: 'Brown',
-        salary: 4250
-    }
-];
+const addTwo = x => x + 2;
+const multiplyByTen = x => x* 10;
 
-// What if we want to find out who has the lowest salary
+let result;
 
-const compareSalaries = (person1, person2) => (
-    person1.salary < person2.salary ? -1 : 1
-);
-
-const sortedBySalary = list => list.sort(compareSalaries)
-
-const result = sortedBySalary(listOfPeople)[0].name;
-console.log('--- 1 ---');
+result = multiplyByTen(addTwo(5))
 console.log(result);
-// Done! and it's readable too!
+
+// const compose = (f1, f2) => x => f2(f1(x));
+
+// result = compose(addTwo, multiplyByTen)(5)
+// console.log(result);
+
+// // Let's say we have a list of people with their salaries
+
+// const listOfPeople = [
+//     {
+//         name: 'John',
+//         lastName: 'Green',
+//         salary: 5000
+//     },
+//     {
+//         name: 'Jane',
+//         lastName: 'Brown',
+//         salary: 1500
+//     },
+//     {
+//         name: 'Chris',
+//         lastName: 'White',
+//         salary: 2500
+//     },
+//     {
+//         name: 'Buck',
+//         lastName: 'Black',
+//         salary: 4250
+//     }
+// ];
+
+// // What if we want to find out who has the lowest salary
+
+// const compareSalaries = (person1, person2) => (
+//     person1.salary < person2.salary ? -1 : 1
+// );
+
+// const sortedBySalary = list => list.sort(compareSalaries)
+
+// const result1 = sortedBySalary(listOfPeople)[0].name;
+// console.log('--- 1 ---');
+// console.log(result1);
+// // Done! and it's readable too!
 
 // // --
 
@@ -115,7 +130,7 @@ console.log(result);
 // );
 // const personWithLowestSalaryInEurosAndTaxesAccokjashfljhaskdfsadkjafk = 'asd';
 // // Syntax error name too long
-// // Ok it's not a real SyntaxError but you get the point
+// // Ok it's not a real error but you get the point
 
 // // We don't really want to think up 5+ single-use variable names
 // // every time we try to print something usefull, so now we have 
@@ -173,7 +188,7 @@ console.log(result);
 
 // console.log(5 |> multiplyBy2);
 
-// // --
+// // // --
 
 // const result7 = (
 //     listOfPeople |> 
